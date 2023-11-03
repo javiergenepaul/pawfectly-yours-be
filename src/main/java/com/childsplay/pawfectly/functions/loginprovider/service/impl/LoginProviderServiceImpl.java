@@ -1,9 +1,9 @@
-package com.childsplay.pawfectly.functions.LoginProvider.service.impl;
+package com.childsplay.pawfectly.functions.loginprovider.service.impl;
 
 import com.childsplay.pawfectly.common.model.LoginProvider;
 import com.childsplay.pawfectly.common.model.User;
-import com.childsplay.pawfectly.functions.LoginProvider.repository.LoginProviderRepository;
-import com.childsplay.pawfectly.functions.LoginProvider.service.LoginProviderService;
+import com.childsplay.pawfectly.functions.loginprovider.repository.LoginProviderRepository;
+import com.childsplay.pawfectly.functions.loginprovider.service.LoginProviderService;
 import com.childsplay.pawfectly.functions.auth.dto.UserLoginProviderRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

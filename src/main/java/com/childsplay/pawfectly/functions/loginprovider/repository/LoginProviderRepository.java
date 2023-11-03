@@ -1,4 +1,4 @@
-package com.childsplay.pawfectly.functions.LoginProvider.repository;
+package com.childsplay.pawfectly.functions.loginprovider.repository;
 
 import com.childsplay.pawfectly.common.model.LoginProvider;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package com.childsplay.pawfectly.functions.LoginProvider.service;
+package com.childsplay.pawfectly.functions.loginprovider.service;
 
 import com.childsplay.pawfectly.common.model.User;
 import com.childsplay.pawfectly.functions.auth.dto.UserLoginProviderRequest;

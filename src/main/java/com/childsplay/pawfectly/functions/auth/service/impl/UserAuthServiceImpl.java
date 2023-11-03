@@ -2,7 +2,7 @@ package com.childsplay.pawfectly.functions.auth.service.impl;
 
 import com.childsplay.pawfectly.common.model.User;
 import com.childsplay.pawfectly.common.model.UserDetailsImpl;
-import com.childsplay.pawfectly.functions.LoginProvider.service.LoginProviderService;
+import com.childsplay.pawfectly.functions.loginprovider.service.LoginProviderService;
 import com.childsplay.pawfectly.functions.auth.dto.UserAuthResponse;
 import com.childsplay.pawfectly.functions.auth.dto.UserLoginProviderRequest;
 import com.childsplay.pawfectly.functions.auth.dto.UserLoginRequest;
