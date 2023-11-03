@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    name: dev-server
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/pawfectly_db
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: "true"
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+server:
+  servlet:
+    context-path: /api
+  port: 5000
+
+jwt:
+  secret: e2JVsI87jgelc61l8v07XIFEYE7YtclunYYP+AVYO4pkS9j0FFE+oZDGu/848Znw
+  expiration: 86400000
+  refresh-expiration: 2629746000
+
+allowed:
+  origin: http://localhost:4022
