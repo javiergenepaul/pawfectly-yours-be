@@ -1,10 +1,8 @@
-Creating a good "README" for your Spring Boot project is essential for helping other developers understand and use your code. Below is a template for a README file that you can use as a starting point for your Spring Boot project:
-
 ---
 
-# Project Name
+# Pawfectly Yours
 
-A brief description of your project goes here.
+Pawfectly Yours is a backend API designed to support a front-end shop admin application for pet shops. This project provides essential functionalities for managing pet shop inventory, orders, and customer data.
 
 ## Table of Contents
 
@@ -21,34 +19,32 @@ A brief description of your project goes here.
 
 ## Introduction
 
-Provide a concise and clear introduction to your project. Explain what it does, why it exists, and any key features or functionalities. You can also include a high-level architecture diagram or any other relevant information that helps readers understand the project at a glance.
+Pawfectly Yours simplifies the management of pet shop businesses by offering a robust backend API. It allows shop administrators to handle pet inventory, track orders, and maintain customer information. The system helps streamline day-to-day operations and provides a foundation for developing a user-friendly front-end admin interface.
 
 ## Prerequisites
 
-List the prerequisites that users need to have in place before they can use your project. This may include software dependencies, hardware requirements, or any specific setup instructions.
-
-For example:
+Before using Pawfectly Yours, ensure you have the following prerequisites:
 
 - Java 8 or later
-- Apache Maven (if your project uses Maven)
+- Apache Maven
 - MySQL database server
 
 ## Getting Started
 
-Explain how to get the project up and running on a local development environment. Include step-by-step instructions, code snippets, or commands for installation and configuration.
+Follow these steps to set up and run Pawfectly Yours on your local development environment.
 
 ### Installation
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/your-project.git
+git clone https://github.com/javiergenepaul/pawfectly-yours.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd your-project
+cd pawfectly-yours
 ```
 
 3. Build the project:
@@ -59,36 +55,60 @@ mvn clean install
 
 ### Configuration
 
-If your project has configuration files or settings, describe how users should configure them. Provide examples of configuration files or environment variables that users might need to set.
+Pawfectly Yours uses a configuration file to manage database connections and other settings. You can find the configuration file at `src/main/resources/application.properties`. Update the properties to match your environment:
+
+```properties
+spring:
+  datasource:
+    name: dev-server
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/pawfectly_db
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: "true"
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+server:
+  servlet:
+    context-path: /api
+  port: 5000
+
+jwt:
+  secret: e2JVsI87jgelc61l8v07XIFEYE7YtclunYYP+AVYO4pkS9j0FFE+oZDGu/848Znw
+  expiration: 86400000
+  refresh-expiration: 2629746000
+
+allowed:
+  origin: http://localhost:4022
+```
 
 ## Usage
 
-Provide instructions on how to use your Spring Boot application. Include any command-line commands, API endpoints, or user interfaces that users can interact with. You can also provide code examples to illustrate common usage scenarios.
+Pawfectly Yours provides various API endpoints for managing pet shop data. Refer to the [API documentation](docs/API.md) for detailed information on the available routes, request formats, and responses.
 
 ## Features
 
-List the key features and functionalities of your project. You can also mention any planned features or future enhancements.
+Pawfectly Yours offers the following key features:
 
-- Feature 1: Description
-- Feature 2: Description
-- Feature 3: Description
+- **Inventory Management:** Add, update, and remove pet inventory items, including pet type, breed, and price.
 
-## Contributing
+- **Order Processing:** Create and manage customer orders, update order status, and view order history.
 
-If you want to encourage others to contribute to your project, provide guidelines on how to do so. Include information on code conventions, branch naming, and the pull request process. Mention any code of conduct or contribution guidelines.
+- **Customer Management:** Store and retrieve customer information, including contact details and order history.
 
-## License
+- **User Authentication:** Secure endpoints with user authentication to protect sensitive data.
+  
+- **0Auth Authentication:** 
 
-Specify the license under which your project is distributed. This is important for users and potential contributors to understand the terms under which they can use, modify, and distribute your code.
-
-For example:
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+- **Customizable:** Extend the functionality with additional features tailored to your pet shop's needs.
 
 ## Acknowledgements
 
-Give credit to any individuals, libraries, or tools that you used or were inspired by while developing your project.
+We'd like to express our gratitude to the open-source community and the creators of the Spring Boot framework for making this project possible.
 
 ---
-
-Feel free to customize this template to match your specific project's details. A well-structured README can greatly enhance the usability and adoption of your Spring Boot project.# pawfectly-yours-be
