@@ -27,7 +27,7 @@ public record UserRegisterRequest(String email,
                 .isActive(true)
                 .displayName(registerRequest.displayName())
                 .password(hashedPassword)
-                .roleEnum(RoleEnum.USER)
+                .role(RoleEnum.USER)
                 .build();
     }
 
@@ -44,7 +44,7 @@ public record UserRegisterRequest(String email,
                 .password(user.getPassword())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
-                .roleEnum(user.getRoleEnum())
+                .roleEnum(user.getRole())
                 .displayName(user.getDisplayName())
                 .build();
     }

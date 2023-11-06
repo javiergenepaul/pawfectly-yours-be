@@ -20,17 +20,16 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
-@RequiredArgsConstructor
 public class JwtUtil {
 
     @Value("${jwt.secret}")
-    private final String secretKey;
+    private String secretKey;
 
     @Value("${jwt.expiration}")
-    private final long expiration;
+    private long expiration;
 
     @Value("${jwt.refresh-expiration}")
-    private final long refreshExpiration;
+    private long refreshExpiration;
 
 
     /**

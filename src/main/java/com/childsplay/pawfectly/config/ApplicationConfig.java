@@ -30,11 +30,15 @@ public class ApplicationConfig {
      */
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> {
-            User user = userRepository.findByEmail(username)
-                    .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-            return UserRegisterRequest.buildUserDetails(user);
-        };
+        try {
+            return username -> {
+                User user = userRepository.findByEmail(username)
+                        .orElseThrow(() -> new UsernameNotFoundException("Credential Error"));
+                return UserRegisterRequest.buildUserDetails(user);
+            };
+        } catch (Exception exception) {
+            throw new UsernameNotFoundException("Credential Error");
+        }
     }
 
     /**
@@ -48,6 +52,7 @@ public class ApplicationConfig {
 
         // Set the custom UserDetailsService for authentication
         authProvider.setUserDetailsService(userDetailsService());
+
 
         // Set the password encoder for securely comparing passwords
         authProvider.setPasswordEncoder(passwordEncoder());

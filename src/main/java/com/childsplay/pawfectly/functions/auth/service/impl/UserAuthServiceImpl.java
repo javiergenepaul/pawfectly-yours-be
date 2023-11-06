@@ -18,6 +18,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -54,7 +55,7 @@ public class UserAuthServiceImpl implements UserAuthService {
      */
     @Override
     public UserAuthResponse login(UserLoginRequest userLoginRequest) {
-        authenticationManager.authenticate(
+        Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         userLoginRequest.email(),
                         userLoginRequest.password()
@@ -62,9 +63,9 @@ public class UserAuthServiceImpl implements UserAuthService {
         );
 
         User user = userRepository.findByEmail(userLoginRequest.email())
-                .orElseThrow();
+                .orElseThrow(() -> new UsernameNotFoundException("Email not found"));
 
-        UserDetailsImpl userDetails = UserRegisterRequest.buildUserDetails(user);
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         String jwtToken = jwtUtil.generateToken(userDetails);
         sessionService.create(user, jwtToken);
         return UserAuthResponse.build(user, jwtToken);
@@ -92,7 +93,7 @@ public class UserAuthServiceImpl implements UserAuthService {
             User newUser = User.builder()
                     .email(userLoginProviderRequest.email())
                     .displayName(userLoginProviderRequest.name())
-                    .roleEnum(RoleEnum.USER)
+                    .role(RoleEnum.USER)
                     .build();
 
             newUser = userRepository.save(newUser);

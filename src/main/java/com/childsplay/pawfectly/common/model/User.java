@@ -54,7 +54,7 @@ public class User {
     private String lastName;
 
     @Enumerated(EnumType.STRING)
-    private RoleEnum roleEnum;
+    private RoleEnum role;
 
     @OneToMany(mappedBy = "user")
     private List<Rating> ratings;

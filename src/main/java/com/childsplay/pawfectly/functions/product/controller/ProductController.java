@@ -28,7 +28,6 @@ public class ProductController {
     public ApiResultModel getAll() {
         return ApiResultModel.builder()
                 .message("Product List")
-                .status(HttpStatus.OK)
                 .resultData(productService.getAll())
                 .build();
     }
